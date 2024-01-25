@@ -1,0 +1,20 @@
+import math
+
+class Solution:
+    def gcdOfStrings(self, str1: str, str2: str) -> str:
+
+        len1 = len(str1)
+        len2 = len(str2)
+        gcd_num = math.gcd(len1, len2)  
+
+        pattern_length1 = int(len1 / gcd_num)
+        pattern_length2 = int(len2 / gcd_num)
+
+        gcd = str1[:gcd_num]
+        solution1 = gcd * pattern_length1
+        solution2 = gcd * pattern_length2
+        
+        if solution1 == str1 and solution2 == str2:
+            return gcd
+        else:
+            return ''
