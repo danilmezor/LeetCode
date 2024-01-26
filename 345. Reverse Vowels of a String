@@ -1,0 +1,24 @@
+class Solution:
+    def reverseVowels(self, s: str) -> str:
+        s = list(s)
+        s_length = len(s)
+        vowels_pos = []
+        vowels_letter = []
+        new_word = []
+
+        vowels_set = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'}
+        
+        for i in range(s_length):
+            if s[i] in vowels_set:
+                vowels_letter.append(s[i])
+    
+        vowels_length = len(vowels_pos)
+
+        for i in range(s_length):
+            if s[i] not in vowels_set:
+                new_word.append(s[i])
+            else:
+                new_word.append(vowels_letter[-1])
+                vowels_letter.pop()
+        
+        return ''.join(new_word)
