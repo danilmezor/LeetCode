@@ -1,0 +1,25 @@
+class Solution(object):
+    def __init__(self):
+        self.max_volume = 0
+        # self.max_combination = [0, 0]
+
+    def maxArea(self, height):
+        """
+        :type height: List[int]
+        :rtype: int
+        """
+
+        pointer_one = 0
+        pointer_two = len(height) - 1 
+
+        while pointer_one < pointer_two:
+            new_volume = min(height[pointer_one], height[pointer_two]) * abs(pointer_one - pointer_two)
+            if new_volume > self.max_volume:
+                self.max_volume = new_volume
+            
+            if height[pointer_one] > height[pointer_two]:
+                pointer_two -= 1
+            else:
+                pointer_one += 1
+
+        return self.max_volume
