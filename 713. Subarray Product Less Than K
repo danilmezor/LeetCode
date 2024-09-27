@@ -1,0 +1,22 @@
+class Solution(object):
+    def numSubarrayProductLessThanK(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
+        left = output = 0
+        result = 1
+
+
+        if k <= 1:
+            return 0
+
+        for right in range(len(nums)):
+            result *= nums[right]
+            while result >= k:
+                result //= nums[left]
+                left += 1
+
+            output += right - left + 1
+        return output
