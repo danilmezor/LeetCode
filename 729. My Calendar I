@@ -1,0 +1,25 @@
+class MyCalendar(object):
+
+    def __init__(self):
+        self.booked_dates = []
+
+    def book(self, start, end):
+        """
+        :type start: int
+        :type end: int
+        :rtype: bool
+        """
+        if start == None or end == None or start > end:
+            return 'null'
+
+        for booked_start, booked_end in self.booked_dates:
+
+            if start < booked_end and end > booked_start:
+                return False 
+        
+        self.booked_dates.append((start, end))
+        return True
+
+
+
+
