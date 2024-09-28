@@ -1,0 +1,27 @@
+from collections import defaultdict
+
+class Solution(object):
+    def largestUniqueNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        integer_seen = defaultdict(int)
+        n = len(nums)
+        answer = 0
+        for i in range(n):
+            integer_seen[nums[i]] += 1
+            
+        for i in range(len(set(integer_seen))):
+            if integer_seen.values()[i] == 1:
+                print(integer_seen.values()[i], integer_seen.keys()[i])
+                answer = max(answer, integer_seen.keys()[i])
+        if integer_seen[answer] == 1:
+            return answer
+        else:
+            return -1
+
+            
+            
+            
+        
