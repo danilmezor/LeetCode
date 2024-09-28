@@ -1,0 +1,23 @@
+from collections import defaultdict
+
+class Solution(object):
+    def intersection(self, nums):
+        """
+        :type nums: List[List[int]]
+        :rtype: List[int]
+        """
+        counter = defaultdict(int)
+
+        arrays = nums
+        result = []
+
+        for array in arrays:
+            for number in array:
+                counter[number] += 1
+        
+        for number, count in counter.items():
+            # print(number, count)
+            if count == len(arrays):
+                result.append(number)
+
+        return sorted(result)
