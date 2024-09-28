@@ -1,0 +1,25 @@
+from collections import defaultdict
+
+class Solution(object):
+    def findWinners(self, matches):
+        """
+        :type matches: List[List[int]]
+        :rtype: List[List[int]]
+        """
+        matches_lost = defaultdict(int)
+        players = set()
+        no_loses = []
+        one_lose = []
+        
+        for winner, loser in matches:
+            matches_lost[loser] += 1
+            players.add(winner)
+            players.add(loser)
+            
+        for player in players:
+            if matches_lost[player] == 0:
+                no_loses.append(player)
+            if matches_lost[player] == 1:
+                one_lose.append(player)
+
+        return [sorted(no_loses), sorted(one_lose)]
