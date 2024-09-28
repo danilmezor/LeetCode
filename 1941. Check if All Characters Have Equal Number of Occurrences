@@ -1,0 +1,15 @@
+from collections import defaultdict
+
+class Solution(object):
+    def areOccurrencesEqual(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+
+        counter = defaultdict(int)
+
+        for i in range(len(s)):
+            counter[s[i]] += 1
+        
+        return True if len(set(counter.values())) == 1 else False
