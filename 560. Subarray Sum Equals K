@@ -1,0 +1,20 @@
+from collections import defaultdict
+
+class Solution(object):
+    def subarraySum(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
+        seen = defaultdict(int)
+        seen[0] = 1
+        answer = current_sum = 0
+
+        for num in nums:
+            current_sum += num # updat the prefix
+            if current_sum - k in seen: # if current_sum - k was met before, then current arrays sum == k
+                answer += seen[current_sum - k] # update the answer with how many times we've seen this number
+            seen[current_sum] += 1 # mark current sum as a seen
+
+        return answer
