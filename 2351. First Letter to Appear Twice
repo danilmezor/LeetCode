@@ -1,0 +1,14 @@
+class Solution(object):
+    def repeatedCharacter(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        my_set = set()
+
+        for i in range(len(s)):
+            if s[i] in my_set:
+                return s[i]
+            
+            my_set.add(s[i])
+        
