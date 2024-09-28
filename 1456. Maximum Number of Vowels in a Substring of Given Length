@@ -1,0 +1,28 @@
+class Solution(object):
+    def maxVowels(self, s, k):
+        """
+        :type s: str
+        :type k: int
+        :rtype: int
+        """
+        vowel = ['e', 'u', 'i', 'o', 'a']
+        vowel_counter = left = 0
+        n = len(s)
+
+        for i in range(k):
+            if s[i] in vowel:
+                vowel_counter += 1
+        
+        max_vowels = vowel_counter
+
+        for right in range(k, n):
+            if s[right] in vowel:
+                vowel_counter += 1
+            
+            if s[left] in vowel:
+                vowel_counter -= 1
+            left += 1
+
+            max_vowels = max(max_vowels, vowel_counter)
+
+        return max_vowels
