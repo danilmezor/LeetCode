@@ -1,0 +1,39 @@
+from collections import defaultdict, Counter
+
+class Solution(object):
+    def maxNumberOfBalloons(self, text):
+        """
+        :type text: str
+        :rtype: int
+        """
+        char_count = Counter(text)
+        return min(
+            char_count['b'],
+            char_count['a'],
+            char_count['l'] // 2,
+            char_count['o'] // 2,
+            char_count['n']
+        )
+            
+        
+#         counter = 0
+#         balloon_dict = defaultdict(int)
+#         balloon_letters = ['b', 'a', 'l', 'o', 'n']
+        
+#         for letter in text:
+#             if letter in balloon_letters:
+#                 balloon_dict[letter] += 1
+            
+#             if  balloon_dict['b'] >= 1 and balloon_dict['a'] >= 1 and balloon_dict['l'] >= 2 and balloon_dict['o'] >= 2 and balloon_dict['n'] >= 1:
+#                 counter += 1
+#                 balloon_dict['b'] -= 1
+#                 balloon_dict['a'] -= 1
+#                 balloon_dict['l'] -= 2
+#                 balloon_dict['o'] -= 2
+#                 balloon_dict['n'] -= 1
+                
+            
+#         return counter
+        
+    
+        
