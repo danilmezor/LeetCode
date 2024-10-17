@@ -1,0 +1,12 @@
+class Solution:
+    def backspaceCompare(self, s: str, t: str) -> bool:
+
+        def stack_manager(string):
+            stack = []
+            for symbol in string:
+                if symbol != '#':
+                    stack.append(symbol)
+                elif stack:
+                    stack.pop()
+            return stack
+        return stack_manager(s) == stack_manager(t)
