@@ -1,0 +1,22 @@
+class Solution:
+    def simplifyPath(self, path: str) -> str:
+        stack = []
+        operations = ['/', '..', '.']
+        curr_dir = []
+        
+        path = path.split('/')
+    
+        for symbol in path:
+            if len(symbol) > 0:
+                
+                if symbol == '/' and symbol == stack[-1]:
+                    continue
+                
+                if symbol == '..':
+                    if stack:
+                        stack.pop()
+                
+                if symbol not in operations:
+                    stack.append(symbol)
+    
+        return '/'+'/'.join(stack)
