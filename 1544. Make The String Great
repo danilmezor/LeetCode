@@ -1,0 +1,28 @@
+import string
+class Solution:
+    def makeGood(self, s: str) -> str:
+        # pair_dict = {letter: letter.upper() for letter in string.ascii_lowercase}
+        pair_dict = dict(zip(string.ascii_lowercase, string.ascii_uppercase))
+        stack = []
+        for letter in s:
+            if stack:
+                if letter.upper() != stack[-1].upper():
+                    stack.append(letter)
+                else:
+                    if letter in pair_dict.keys() and stack[-1] in pair_dict.values():
+                        stack.pop()
+                        continue
+                    if letter in pair_dict.values() and stack[-1] in pair_dict.keys():
+                        stack.pop()
+                        continue
+                    if letter in pair_dict.keys() and stack[-1] in pair_dict.keys():
+                        stack.append(letter)
+                        continue
+                    if letter in pair_dict.values() and stack[-1] in pair_dict.values():
+                        stack.append(letter)
+                        continue
+            else:
+                stack.append(letter)
+        return ''.join(stack)
+                        
+        
