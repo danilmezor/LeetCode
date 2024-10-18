@@ -1,0 +1,32 @@
+from collections import deque
+
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        # q = deque(nums)
+
+        # for i in range(k):
+        #     q.appendleft(q.pop())
+
+        # nums = list(q)
+
+        # k = k % len(nums)
+        # first = nums[:len(nums) - k]
+        # last = nums[len(nums) - k:]
+
+        # nums.clear()
+        # nums.extend(last)
+        # nums.extend(first)
+
+
+        # first = nums[:len(nums) - k]
+
+        k = k % len(nums)
+        last = nums[len(nums) - k:]
+
+        for i in range(k):
+            # nums.insert(0, last.pop(-1))
+            nums[:0] = [last.pop(-1)] # same, but faster
+            nums.pop(-1)
