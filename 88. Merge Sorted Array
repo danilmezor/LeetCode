@@ -1,0 +1,12 @@
+class Solution:
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+        """
+        Do not return anything, modify nums1 in-place instead.
+        """
+        for i in range(m + n):
+            if nums2:
+                nums1[-(i+1)] = nums2.pop()
+            if not nums2:
+                break
+
+        nums1.sort()
