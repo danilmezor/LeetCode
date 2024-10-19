@@ -1,0 +1,26 @@
+class Solution:
+    def evalRPN(self, tokens: List[str]) -> int:
+
+        def operation(op, num1, num2):
+            if op == '+':
+                return int(num1) + int(num2)
+            elif op == '-':
+                return int(num1) - int(num2)
+            elif op == '*':
+                return int(num1) * int(num2)
+            elif op == '/':
+                return int(num1) / int(num2)
+
+        stack = []
+        
+        for token in tokens:
+            if token not in ['+', '-', '*', '/']:
+                stack.append(token)
+            
+            else:
+                num2 = stack.pop()
+                num1 = stack.pop()
+
+                stack.append(operation(token, num1, num2))
+
+        return int(stack[-1])
