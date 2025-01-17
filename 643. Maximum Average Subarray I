@@ -5,6 +5,29 @@ class Solution(object):
         :type k: int
         :rtype: float
         """        
+
+        # left_pointer = 0
+        # right_pointer = k
+        # answer = -100000
+
+        # sum_nums = [0]
+        # current_sum = 0
+
+        # for i in range(len(nums)):
+        #     new_sum = current_sum + nums[i]
+        #     sum_nums.append(new_sum)
+        #     current_sum = new_sum
+
+        # for i in range(right_pointer, len(sum_nums)):
+        #     subarray = sum_nums[right_pointer] - sum_nums[left_pointer]
+
+        #     answer = max(answer, subarray/k)
+        #     left_pointer += 1
+        #     right_pointer += 1
+
+        # return answer
+
+
         cum_sum = 0.0
         average = 0.0
         for i in range(k):
