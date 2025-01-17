@@ -1,0 +1,31 @@
+class Solution:
+
+    def find_non_zero(self, nums, main_position, max_length):
+        for i in range(main_position, max_length):
+            if nums[i] != 0:
+                return i
+
+    def moveZeroes(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        slow_pointer = 0
+        for fast_pointer in range(len(nums)):
+            if nums[slow_pointer] == 0 and nums[fast_pointer] != 0:
+                nums[slow_pointer], nums[fast_pointer] = nums[fast_pointer], nums[slow_pointer]
+            if nums[slow_pointer] != 0:
+                slow_pointer += 1
+
+        # main_pointer = 0
+        # max_length = len(nums)
+
+        # for i in range(max_length):
+        #     if main_pointer != max_length:
+        #         if nums[main_pointer] != 0:
+        #             main_pointer += 1
+        #         elif nums[main_pointer] == 0:
+        #             non_zero_index = self.find_non_zero(nums, main_pointer, max_length)
+        #             if non_zero_index:
+        #                 nums[main_pointer], nums[non_zero_index] = nums[non_zero_index], nums[main_pointer]
+        #                 main_pointer += 1
+
