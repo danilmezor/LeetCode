@@ -1,0 +1,36 @@
+class Solution:
+    def asteroidCollision(self, asteroids: List[int]) -> List[int]:
+        asteroid_stack = []
+
+        for asteroid in asteroids:
+            is_destoyed = False
+            if len(asteroid_stack) == 0:
+                asteroid_stack.append(asteroid)
+                continue
+            
+            elif asteroid > 0:
+                asteroid_stack.append(asteroid)
+                continue  
+
+            elif asteroid_stack[-1] < 0 and asteroid < 0:
+                asteroid_stack.append(asteroid) 
+                continue     
+
+            while len(asteroid_stack) != 0 and asteroid_stack[-1] > 0:
+                if abs(asteroid_stack[-1]) < abs(asteroid):
+                    asteroid_stack.pop()
+                elif abs(asteroid_stack[-1]) > abs(asteroid):
+                    is_destoyed = True
+                    break
+                elif abs(asteroid_stack[-1]) == abs(asteroid):
+                    asteroid_stack.pop()
+                    is_destoyed = True
+                    break   # Added break here
+                
+                if len(asteroid_stack) == 0 or asteroid_stack[-1] < 0:  # Added this check
+                    break
+            
+            if is_destoyed == False:
+                asteroid_stack.append(asteroid)
+
+        return asteroid_stack
