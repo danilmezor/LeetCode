@@ -1,0 +1,34 @@
+from collections import deque
+
+class Solution:
+    def predictPartyVictory(self, senate: str) -> str:
+        senate_size = len(senate)
+        # if senate_size == 1:
+        #     if senate == 'R':
+        #         return 'Radiant'
+        #     else:
+        #         return 'Dire'
+
+        dire_senate = deque()
+        radiant_senate = deque()
+        for i in range(senate_size):
+            if senate[i] == 'R':
+                radiant_senate.append(i)
+            else:
+                dire_senate.append(i)
+
+        while len(dire_senate) != 0 and len(radiant_senate) != 0:
+
+            dire_index = dire_senate.popleft()
+            
+            radiant_index = radiant_senate.popleft() 
+
+            if dire_index < radiant_index:
+                dire_senate.append(dire_index + senate_size)
+            elif radiant_index < dire_index:
+                radiant_senate.append(radiant_index + senate_size)
+
+        if len(dire_senate) > 0:
+            return 'Dire'
+        else:
+            return 'Radiant'
